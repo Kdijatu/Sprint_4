@@ -9,7 +9,6 @@
   <!--Posibilita que sea compatible con Internet Explore-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
   <link href="style_S4.css" rel="stylesheet"> -->
 
 </head>
@@ -23,7 +22,7 @@
     <div class="container">
       <div class="row">
         <!--Logo-->
-        <div class="col-4 col-md-2">
+        <div class="col-3 col-md-1">
           <a class="navbar-brand" href="#">
             <img src="img/Logo1.png" alt="logo site" class="logo-brand">
           </a>
@@ -31,7 +30,7 @@
 
 
         <!--Boton Hamburgesa--------------------->
-        <div class="col-2 col-md-8">
+        <div class="col-1 col-md-6">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -54,13 +53,19 @@
               </li>
             </ul>
 
-            <!--Barra Busqueda---------------------->
-            <form class="d-flex ms-5 mt-2">
-              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-              <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
           </div>
+
         </div>
+
+        <!--Barra Busqueda---------------------->
+        <form class="col-1 col-md-2" method="POST" action="busqueda.html" id="busquedaForm"
+          onsubmit="return busquedaValidate()" name="busquedaForm">
+          <input class="form-control me-2" type="search" id="busqueda" placeholder="Buscar" aria-label="Buscar">
+          <div class="invalid-feedback" id="errorBusqueda"></div>
+        </form>
+
+        <button class="col-1 col-md-1 btn btn-outline-success" type="submit">Buscar</button>
+
 
 
         <!--Boton Login --------------------------->
@@ -93,15 +98,17 @@
         <!--Body Modal Login ---->
         <div class="modal-body">
           <!--Formulario datos Login---->
-          <form>
-            <div class="mb-3">
-              <label for="user-name" class="col-form-label">Usuario:</label>
-              <input type="text" class="form-control" id="user-name">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="col-form-label">Contraseña:</label>
-              <input type="text" class="form-control" id="password">
-            </div>
+          <form method="POST" action="login.html" id="loginForm" onsubmit="return loginValidate()" name="loginForm">
+          </form>
+          <div class="mb-3">
+            <label for="loginEmail" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="loginEmail">
+          </div>
+
+          <div class="mb-3">
+            <label for="loginPassword" class="col-form-label">Contraseña:</label>
+            <input type="text" class="form-control" id="loginPassword">
+          </div>
           </form>
         </div>
 
@@ -128,31 +135,52 @@
         <!--Body Modal Registro---->
         <div class="modal-body">
           <!--Formulario para datos registro---->
-          <form>
+          <form method="POST" action="registro.html" id="registroForm" onsubmit="return registerValidate()"
+            name="registroForm">
+
             <div class="mb-3">
               <label for="name" class="col-form-label">Nombre:</label>
               <input type="text" class="form-control" id="name">
+              <div class="invalid-feedback" id="errorName"></div>
             </div>
 
             <div class="mb-3">
               <label for="surname" class="col-form-label">Apellidos:</label>
               <input type="text" class="form-control" id="surname">
+              <div class="invalid-feedback" id="errorSurname"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="province" class="col-form-label">Provincia:</label>
+              <select id="province" class="form-control">
+                <option selected value=""></option>
+                <option>Barcelona</option>
+                <option>Girona</option>
+                <option>Tarragona</option>
+                <option>Lleida</option>
+              </select>
+              <div class="invalid-feedback" id="errorProvince"></div>
             </div>
 
             <div class="mb-3">
               <label for="email" class="col-form-label">Correo electronico:</label>
               <input type="text" class="form-control" id="email">
+              <div class="invalid-feedback" id="errorEmail"></div>
             </div>
 
-            <div class="mb-3">
-              <label for="user" class="col-form-label">Usuario:</label>
-              <input type="text" class="form-control" id="user">
-            </div>
 
             <div class="mb-3">
               <label for="password" class="col-form-label">Contraseña:</label>
               <input type="text" class="form-control" id="password">
+              <div class="invalid-feedback" id="errorPassword"></div>
             </div>
+
+            <div class="mb-3">
+              <label for="rePassword" class="col-form-label">Repite la contraseña:</label>
+              <input type="text" class="form-control" id="rePassword">
+              <div class="invalid-feedback" id="errorRePassword"></div>
+            </div>
+
           </form>
         </div>
 
@@ -286,12 +314,10 @@
 
 
 
-  <!-- <script src="js/jquery-3.2.1.slim.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/popper.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
     crossorigin="anonymous"></script>
+  <script src="sprint4.js" type="text/javascript"></script>
 
 </body>
 
