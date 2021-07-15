@@ -1,128 +1,127 @@
 const busquedaForm = document.getElementById('busqueda');
 const loginForm = document.getElementById('loginForm');
-const registroForm = document.getElementById('resgistroForm');
+const registroForm = document.getElementById('registroForm');
 
-
-// Creo que no he connectado bien el docuemnto html con el de js
 
 //FUNCION PARA VALIDAR LAS BUSQUEDAS
-function busquedaValidate(){
+function busquedaValidate() {
 
 	var acumErroresBus = 0;
 
-	busquedaForm.class.List.remove('is-invalid');
+	busquedaForm.classList.remove('is-invalid');
 
-	var inputBusqueda = document.getElementById('busqueda'); 
+	var inputBusqueda = document.getElementById('busqueda');
 
-	if(inputBusqueda.value == "") {
+	if (inputBusqueda.value == "") {
 		inputBusqueda.classList.add("is-invalid");
-		document.getElementById("errorBusqueda").textContent = "Introduzca un elemento de busqueda busqueda";
-        acumErroresBus ++;
-    }else if(!validar_busqueda(inputBusqueda.value)){ 
+		document.getElementById("errorBusqueda").textContent = "Introduzca un elemento de búsqueda";
+		acumErroresBus++;
+	} else if (!validar_busqueda(inputBusqueda.value)) {
 		inputBusqueda.classList.add("is-invalid");
 		document.getElementById("errorBusqueda").textContent = "La busqueda debe tener un mínimo de 3 crácteres";
-		acumErroresBus ++;
+		acumErroresBus++;
 	}
-
+	return acumErroresBus == 0;
 }
 
 
 //FUNCION PARA VALIDAR LOS DATOS DE LOGIN
-function loginValidate(){
+function loginValidate() {
 
 	var acumErroresLog = 0;
 
 	loginForm.classList.remove('is-invalid');
 	var inputLoginEmail = document.forms["loginForm"]["loginEmail"];
-	var inputLoginPassword= document.forms["loginForm"]["loginPassword"];
+	var inputLoginPassword = document.forms["loginForm"]["loginPassword"];
 
-	if(inputLoginEmail.value == "") {
+	if (inputLoginEmail.value == "") {
 		inputLoginEmail.classList.add("is-invalid");
 		document.getElementById("errorLoginEmail").textContent = "Este campo es obligatorio";
-        acumErroresLog ++;
-    }else if(!validar_email(inputLoginEmail.value)){
+		acumErroresLog++;
+	} else if (!validar_email(inputLoginEmail.value)) {
 		inputLoginEmail.classList.add("is-invalid");
 		document.getElementById("errorLoginEmail").textContent = "El email no cumple el formato";
-		acumErroresLog ++;
+		acumErroresLog++;
 	}
 
-    if(inputLoginPassword.value == "") {           
+	if (inputLoginPassword.value == "") {
 		inputLoginPassword.classList.add("is-invalid");
 		document.getElementById("errorLoginPassword").textContent = "Este campo es obligatorio";
-		acumErroresLog ++;
+		acumErroresLog++;
+	}
 
+	return acumErroresLog == 0;
 }
-
 
 //FUNCION PARA VALIDAR LOS DATOS DEL REGISTRO 
 function registerValidate() {
 	var acumErrores = 0;
-	
+
 	registroForm.classList.remove('is-invalid');
-	
+
 	var inputEmail = document.getElementById('email');
 	var inputName = document.forms["registroForm"]["name"];
 	var inputSurname = document.forms["registroForm"]["surname"];
 	var inputProvince = document.forms["registroForm"]["province"];
 	var inputPassword = document.forms["registroForm"]["password"];
-	var inputRePassword = document.forms["registroForm"]["re-password"];
+	var inputRePassword = document.forms["registroForm"]["rePassword"];
 
-	if(inputName.value == "") {
+	if (inputName.value == "") {
 		inputName.classList.add("is-invalid");
 		document.getElementById("errorName").textContent = "Este campo es oligatorio";
-		acumErrores ++;
+		acumErrores++;
 	}
 
-	if(inputSurname.value == "") {
+	if (inputSurname.value == "") {
 		inputSurname.classList.add("is-invalid");
 		document.getElementById("errorSurname").textContent = "Este campo es oligatorio";
-		acumErrores ++;
+		acumErrores++;
 	}
 
-	if(inputProvince.value == "") {
+	if (inputProvince.value == "") {
 		inputProvince.classList.add("is-invalid");
 		document.getElementById("errorProvince").textContent = "Seleccione una provincia";
-		acumErrores ++;
+		acumErrores++;
 	}
 
-	if(inputEmail.value == "") {
+	if (inputEmail.value == "") {
 		inputEmail.classList.add("is-invalid");
 		document.getElementById("errorEmail").textContent = "Este campo es obligatorio";
-        acumErrores ++;
-    }else if(!validar_email(inputEmail.value)){
+		acumErrores++;
+	} else if (!validar_email(inputEmail.value)) {
 		inputEmail.classList.add("is-invalid");
 		document.getElementById("errorEmail").textContent = "El email no cumple el formato";
-		acumErrores ++;
+		acumErrores++;
 	}
 
-    if(inputPassword.value == "") {           
+	if (inputPassword.value == "") {
 		inputPassword.classList.add("is-invalid");
 		document.getElementById("errorPassword").textContent = "Este campo es obligatorio";
-		acumErrores ++;
+		acumErrores++;
 	}
 
-		//////////////// REVISAR ESTE IF
-	if(inputRePassword.value == !inputPassword) {           
+
+	if (inputRePassword.value == "") {
+		inputRePassword.classList.add("is-invalid");
+		document.getElementById("errorRePassword").textContent = "Este campo es obligatorio";
+		acumErrores++;
+	} else (inputRePassword.value == !inputPassword) {
 		inputRePassword.classList.add("is-invalid");
 		document.getElementById("errorRePassword").textContent = "La contraseña no coincide";
-		acumErrores ++;
+		acumErrores++;
 	}
-	
 
-    if (acumErrores > 0){
-        return false;
-    }else{
-		return true;
-	}
+
+	return acumErrores == 0;
 }
 
 
-/***************************** ESTA PARTE DEL CODIGO ESTABA EN EL EJEMPLO PERO NO ENTIENDO CUAL ES SU FUNCIÓN
-registroForm.addEventListener('blur', (event) => {
+/*registroForm.addEventListener('blur', (event) => {
 	console.log(event);
 	if(event.target.value!='') event.target.classList.remove('is-invalid');
-    registerValidate();
-}, true); */ 
+	registerValidate();
+}, true); 
+*/
 
 function validar_busqueda(palabra) {
 	var regex = /^.{3,}$/;
@@ -134,3 +133,8 @@ function validar_email(email) {
 	var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	return regex.test(email) ? true : false;
 }
+
+/*function validar_contrase(contra){
+	var regex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+	return regex.test(contra) ? true : false;
+}*/

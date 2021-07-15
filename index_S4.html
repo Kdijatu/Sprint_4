@@ -58,14 +58,15 @@
         </div>
 
         <!--Barra Busqueda---------------------->
-        <form class="col-1 col-md-2" method="POST" action="busqueda.html" id="busquedaForm"
-          onsubmit="return busquedaValidate()" name="busquedaForm">
-          <input class="form-control me-2" type="search" id="busqueda" placeholder="Buscar" aria-label="Buscar">
-          <div class="invalid-feedback" id="errorBusqueda"></div>
-        </form>
+        <div class="col-2 col-md-3">
+          <form id="busquedaForm" onsubmit="return busquedaValidate()" name="busquedaForm">
+            <input class="form-control me-2" type="search" id="busqueda" placeholder="Buscar" aria-label="Buscar">
+            <div class="invalid-feedback" id="errorBusqueda"></div>
 
-        <button class="col-1 col-md-1 btn btn-outline-success" type="submit">Buscar</button>
+            <button class="btn btn-outline-primary mt-2 me-1 ms-11" type="submit">Buscar</button>
+          </form>
 
+        </div>
 
 
         <!--Boton Login --------------------------->
@@ -96,27 +97,32 @@
         </div>
 
         <!--Body Modal Login ---->
-        <div class="modal-body">
-          <!--Formulario datos Login---->
-          <form method="POST" action="login.html" id="loginForm" onsubmit="return loginValidate()" name="loginForm">
-          </form>
-          <div class="mb-3">
-            <label for="loginEmail" class="col-form-label">Email:</label>
-            <input type="text" class="form-control" id="loginEmail">
+        <!--Formulario datos Login---->
+        <form id="loginForm" onsubmit="return loginValidate()" name="loginForm">
+          <div class="modal-body">
+
+            <div class="mb-3">
+              <label for="loginEmail" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="loginEmail">
+              <div class="invalid-feedback" id="errorLoginEmail"></div>
+
+            </div>
+
+            <div class="mb-3">
+              <label for="loginPassword" class="col-form-label">Contraseña:</label>
+              <input type="text" class="form-control" id="loginPassword">
+              <div class="invalid-feedback" id="errorLoginPassword"></div>
+            </div>
+
           </div>
 
-          <div class="mb-3">
-            <label for="loginPassword" class="col-form-label">Contraseña:</label>
-            <input type="text" class="form-control" id="loginPassword">
+          <!--Footer Modal Login ---->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-primary" type="submit">Entrar</button>
           </div>
-          </form>
-        </div>
+        </form>
 
-        <!--Footer Modal Login ---->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Entrar</button>
-        </div>
       </div>
     </div>
   </div>
@@ -133,10 +139,11 @@
         </div>
 
         <!--Body Modal Registro---->
-        <div class="modal-body">
-          <!--Formulario para datos registro---->
-          <form method="POST" action="registro.html" id="registroForm" onsubmit="return registerValidate()"
-            name="registroForm">
+        <!--Formulario para datos registro---->
+        <form method="POST" action="registro.html" id="registroForm" onsubmit="return registerValidate()"
+          name="registroForm">
+          <div class="modal-body">
+
 
             <div class="mb-3">
               <label for="name" class="col-form-label">Nombre:</label>
@@ -172,7 +179,7 @@
             <div class="mb-3">
               <label for="password" class="col-form-label">Contraseña:</label>
               <input type="text" class="form-control" id="password">
-              <div class="invalid-feedback" id="errorPassword"></div>
+              <div class="invalid-feedback" id="erroSrPassword"></div>
             </div>
 
             <div class="mb-3">
@@ -181,14 +188,15 @@
               <div class="invalid-feedback" id="errorRePassword"></div>
             </div>
 
-          </form>
-        </div>
 
-        <!--Footer Modal Registro ---->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Registarte</button>
-        </div>
+          </div>
+
+          <!--Footer Modal Registro ---->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-primary" type="submit">Registarte</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
