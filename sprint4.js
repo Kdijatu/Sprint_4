@@ -105,7 +105,7 @@ function registerValidate() {
 		inputRePassword.classList.add("is-invalid");
 		document.getElementById("errorRePassword").textContent = "Este campo es obligatorio";
 		acumErrores++;
-	} else (inputRePassword.value == !inputPassword) {
+	} else if(inputRePassword.value == !inputPassword) {
 		inputRePassword.classList.add("is-invalid");
 		document.getElementById("errorRePassword").textContent = "La contraseña no coincide";
 		acumErrores++;
