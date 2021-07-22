@@ -1,0 +1,40 @@
+
+
+.logo-brand{
+    min-width: 50px;
+    max-width: 100px;
+}
+
+.envoltorio {
+    margin-top: 40px;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.secciones{
+    text-align: justify;
+    padding: 20px;
+}
+.tercera-seccion{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+.imgs{
+    min-width: 50px;
+    max-width: 100px;
+    display:block;
+    margin:auto;
+}
+
+.footer-text{
+    text-align:center;
+    color: grey;
+    font-size: 12px;
+}
+
+
+
